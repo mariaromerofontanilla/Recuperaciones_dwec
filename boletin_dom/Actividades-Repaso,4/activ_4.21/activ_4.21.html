@@ -16,13 +16,27 @@
         }
     </script>
 
-    <p></p>
-    <p></p>
-    <p></p>
-    <p></p>
+    <p id="p"></p>
+    <p id="p"></p>
+    <p id="p"></p>
+    <p id="p"></p>
 
     <label>Color del parrafo</label><input type="text" id="textColor" value="blue" /><br>
     <input type="button" onclick="addParagraph()" value="Añadir párrafos"/>
 
 </body>
 </html>
+
+<script>
+    let parrafos = document.getElementsByTagName("p");
+    
+    function addParagraph() {
+        let div = document.getElementsByTagName("div")[0];
+        let p = document.createElement("p");
+        let text = document.createTextNode("Parrafo");
+        p.appendChild(text);
+        div.appendChild(p);
+        p.style.color = document.getElementById("textColor").value;
+    }
+    
+</script>
