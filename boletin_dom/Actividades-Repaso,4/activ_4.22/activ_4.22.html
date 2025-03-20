@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 22</title>
+</head>
+<body>
+    <h1>Lista dinámica</h1>
+
+    <ul id="lista">
+       
+    </ul>
+
+    <input type="button" value="Añadir elemento" onclick="addElement()">
+</body>
+</html>
+
+<script>
+    let lista = document.getElementById("lista");
+
+    function addElement() {
+        let li = document.createElement("li");
+        let text = document.createTextNode("Elemento");
+        li.appendChild(text);
+        lista.appendChild(li);
+    }
+</script>
