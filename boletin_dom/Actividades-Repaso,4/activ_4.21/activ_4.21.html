@@ -6,20 +6,12 @@
     <title>Actividad 21</title>
 </head>
 <body>
-    <script>
-        function addParagraph() {
-            let div = document.getElementsByTagName("div")[0];
-            let p = document.createElement("p");
-            let text = document.createTextNode("Este es un nuevo párrafo");
-            p.appendChild(text);
-            div.appendChild(p);
-        }
-    </script>
+ 
 
-    <p id="p"></p>
-    <p id="p"></p>
-    <p id="p"></p>
-    <p id="p"></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
 
     <label>Color del parrafo</label><input type="text" id="textColor" value="blue" /><br>
     <input type="button" onclick="addParagraph()" value="Añadir párrafos"/>
@@ -28,15 +20,12 @@
 </html>
 
 <script>
-    let parrafos = document.getElementsByTagName("p");
-    
     function addParagraph() {
-        let div = document.getElementsByTagName("div")[0];
-        let p = document.createElement("p");
-        let text = document.createTextNode("Parrafo");
-        p.appendChild(text);
-        div.appendChild(p);
-        p.style.color = document.getElementById("textColor").value;
-    }
-    
+  let parrafos = document.getElementsByTagName("p");
+  let color = document.getElementById("textColor").value;
+  for (let i = 0; i < parrafos.length; i++) {
+      parrafos[i].innerHTML = "Párrafo " + i;
+      parrafos[i].style.color = color;
+  }
+}
 </script>
