@@ -6,6 +6,31 @@
     <title>Actividad 23</title>
 </head>
 <body>
-    
+    <input type="text" id="textBox">
+    <button onclick="insertText()">Insertar Texto</button>
+    <button onclick="deleteText()">Borrar Texto</button>
+    <button onclick="copyText()">Copiar Texto</button>
+    <button onclick="replaceText()">Reemplazar Texto</button>
 </body>
 </html>
+    <script>
+        function insertText() {
+            let textBox = document.getElementById("textBox");
+            textBox.value += " Nuevo texto";
+        }
+
+        function deleteText() {
+            document.getElementById("textBox").value = "";
+        }
+
+        function copyText() {
+            let textBox = document.getElementById("textBox");
+            textBox.select();
+            document.execCommand("copy");
+            alert("Texto copiado");
+        }
+
+        function replaceText() {
+            document.getElementById("textBox").value = "Texto reemplazado";
+        }
+    </script>

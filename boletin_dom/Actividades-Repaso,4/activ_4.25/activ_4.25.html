@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 25</title>
+</head>
+<body>
+    <select id="provinciaSelect" onchange="mostrarSeleccion()">
+    </select>
+    
+    <script>
+        let provincias = ["Huelva", "Sevilla", "Córdoba", "Jaén", "Almería", "Granada", "Málaga", "Cádiz"];
+        
+        let select = document.getElementById("provinciaSelect");
+        
+        provincias.forEach(provincia => {
+            let option = document.createElement("option");
+            option.value = provincia;
+            option.textContent = provincia;
+            select.appendChild(option);
+        });
+
+        function mostrarSeleccion() {
+            let seleccion = select.value;
+            alert("Provincia seleccionada: " + seleccion);
+        }
+    </script>
+</body>
+</html>
