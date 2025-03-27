@@ -111,21 +111,21 @@ let horario = [
 // Parametros:
     // id: el id de la asinatura (numbre)
 // Retorna la asignatura (un objeto)
-function obtenerAsignatura(id) {
+function getAsignatura(id) {
     for(let i=0; i < asignaturas.length; i++){
         if(asignaturas[i].id == id) return asignaturas[i];
     }
     return null;
 }
 
-function obtenerDiaSemana(id) { 
+function getDiaSemana(id) { 
     for(let i=0; i < dias.length; i++){
         if(dias[i].id == id) return dias[i];
     }
     return null;
 }
 
-function obtenerTramoHorario(id) { 
+function getTramoHorario(id) { 
     for(let i=0; i < tramos.length; i++){
         if(tramos[i].id == id) return tramos[i];
     }
@@ -134,3 +134,59 @@ function obtenerTramoHorario(id) {
 }
 
 // Crear Horario 
+// function horario() {
+//     let tabla = document.getElementById("inputCrearHorario");
+//     tabla.style.display = "table"; // Hace visible la tabla
+// }
+
+function crearHorario() {
+    let tabla = document.getElementById("horario");
+    tabla.innerHTML = "";
+
+    let thead = document.createElement("thead");
+    let headerRow = document.createElement("tr");
+    let row = document.createElement("tr");
+
+    let thHora = document.createElement("th");
+    thHora.textContent = "Hora";
+    headerRow.appendChild(thHora);
+
+    dias.forEach(dia => {
+        let th = document.createElement("th");
+        th.textContent = getDiaSemana(dia.id).nombre;
+        headerRow.appendChild(th);
+    });
+
+    thead.appendChild(headerRow);
+    tabla.appendChild(thead);
+    
+
+    let tbody = document.createElement("tbody");
+
+    tbody.appendChild(row);
+    tabla.appendChild(tbody);
+
+    // tramos.forEach(tramo =>{
+    //     let tdTramo = document.createElement("td");
+    //     tdTramo.textContent = getTramoHorario(tramo.id).hora;
+    //     row.appendChild(tdTramo);
+    // })
+        
+    horario.forEach(tramo =>{
+        let filas = document.createElement("tr");
+
+        let tdHora = document.createElement("td");
+
+        // tdHora.textContent = getTramoHorario(tramo.id).hora;
+
+        filas.appendChild(tdHora);
+
+        tbody.appendChild(filas);
+    }
+    )
+
+
+}
+
+document.getElementById("inputCrearHorario").addEventListener("click", crearHorario);
+
