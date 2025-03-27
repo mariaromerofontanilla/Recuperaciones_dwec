@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dado</title>
+</head>
+<body>
+    <div id="dado"></div>
+    <button onclick="tirardado()">Tirar dato</button>
+    <button onclick="detenerLanzamiento()">Detener</button>
+
+    <script>
+        let valorDado=1;
+        let temporizador;
+
+        function tirardado() {
+            temporizador = setInterval(lanzamiento, 500);
+            setTimeout(detenerLanzamiento, 5000);
+
+            // for (let i = 0; i < 10; i++) {
+            //     setTimeout(() => {
+            //         let dado = Math.floor(Math.random() * 6) + 1;
+            //         document.getElementById("dado").innerHTML = dado;
+            //     }, 500 * i);
+            // }
+        }
+
+        function lanzamiento(){
+            valorDado = Math.floor(Math.random() * 6) + 1;
+            console.log(valorDado);
+            // document.getElementById("dado").innerHTML = valorDado;
+        }
+
+        function detenerLanzamiento() {
+            clearInterval(temporizador);
+        }
+
+
+        /* 
+         function tirardado() {
+            temporizador = setInterval(lanzamiento, 500);
+            setTimeout(detenerLanzamiento, 5000);
+        */
+    </script>
+</body>
+</html>
