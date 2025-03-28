@@ -198,10 +198,13 @@ function crearHorario() {
             filas.appendChild(td);
         });
         tbody.appendChild(filas);
-     
     }
     )
 
+     // Cuando ponga el mouse en lo alto de cualquier asignatura, que me muestre el nombre de la asignatura, el grupo y el aula, el cuadro amarillo de abajo
+    td.addEventListener("mouseenter", () => {
+        document.getElementById("aula").textContent = asignaturas.aula;
+    });
 
 }
 
