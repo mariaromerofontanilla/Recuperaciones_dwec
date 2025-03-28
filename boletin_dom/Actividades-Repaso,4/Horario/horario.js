@@ -182,6 +182,23 @@ function crearHorario() {
         filas.appendChild(tdHora);
 
         tbody.appendChild(filas);
+
+        //Para que aparezcan las horas
+        // let thHora = document.createElement("th");
+        // thHora.textContent = getTramoHorario(tramo.id).hora;
+        // filas.appendChild(thHora);
+        // tbody.appendChild(filas);
+
+        //forEach para poner los dias, horas de la semana
+        dias.forEach(dia => {
+            let td = document.createElement("td");
+            let asignatura = getAsignatura(tramo.asignaturas[dia.id-1].idAsignatura);
+            td.style.backgroundColor = asignatura.color;
+            td.textContent = asignatura.nombre + " " + asignatura.grupo + " " + asignatura.aula;
+            filas.appendChild(td);
+        });
+        tbody.appendChild(filas);
+     
     }
     )
 
