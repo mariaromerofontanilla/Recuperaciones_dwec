@@ -160,7 +160,6 @@ function crearHorario() {
     thead.appendChild(headerRow);
     tabla.appendChild(thead);
     
-
     let tbody = document.createElement("tbody");
 
     tbody.appendChild(row);
@@ -173,38 +172,66 @@ function crearHorario() {
     // })
         
     horario.forEach(tramo =>{
-        let filas = document.createElement("tr");
 
+        let fila = document.createElement("tr");
+        
+        // Añadir la hora del tramo
         let tdHora = document.createElement("td");
+        tdHora.textContent = getTramoHorario(tramo.idTramo).hora;
+        fila.appendChild(tdHora);
 
-        // tdHora.textContent = getTramoHorario(tramo.id).hora;
-
-        filas.appendChild(tdHora);
-
-        tbody.appendChild(filas);
-
-        //Para que aparezcan las horas
-        // let thHora = document.createElement("th");
-        // thHora.textContent = getTramoHorario(tramo.id).hora;
-        // filas.appendChild(thHora);
-        // tbody.appendChild(filas);
-
-        //forEach para poner los dias, horas de la semana
-        dias.forEach(dia => {
+        // Añadir las asignaturas para cada día
+        tramo.asignaturas.forEach(dia => {
             let td = document.createElement("td");
-            let asignatura = getAsignatura(tramo.asignaturas[dia.id-1].idAsignatura);
+            let asignatura = getAsignatura(dia.idAsignatura);
+            
             td.style.backgroundColor = asignatura.color;
             td.textContent = asignatura.nombre + " " + asignatura.grupo + " " + asignatura.aula;
-            filas.appendChild(td);
+            
+            // Añadir el event listener a cada celda
+            td.addEventListener("mouseenter", () => {
+                document.getElementById("aula").textContent = 
+                    `Asignatura: ${asignatura.nombre} Grupo: ${asignatura.grupo} Aula: ${asignatura.aula}`;
+            });
+            
+            fila.appendChild(td);
         });
-        tbody.appendChild(filas);
-    }
-    )
 
-     // Cuando ponga el mouse en lo alto de cualquier asignatura, que me muestre el nombre de la asignatura, el grupo y el aula, el cuadro amarillo de abajo
-    td.addEventListener("mouseenter", () => {
-        document.getElementById("aula").textContent = asignaturas.aula;
+        tbody.appendChild(fila);
     });
+
+    //     let filas = document.createElement("tr");
+
+    //     let tdHora = document.createElement("td");
+
+    //     // tdHora.textContent = getTramoHorario(tramo.id).hora;
+
+    //     filas.appendChild(tdHora);
+
+    //     tbody.appendChild(filas);
+
+    //     //Para que aparezcan las horas
+    //     // let thHora = document.createElement("th");
+    //     // thHora.textContent = getTramoHorario(tramo.id).hora;
+    //     // filas.appendChild(thHora);
+    //     // tbody.appendChild(filas);
+
+    //     //forEach para poner los dias, horas de la semana
+    //     dias.forEach(dia => {
+    //         let td = document.createElement("td");
+    //         let asignatura = getAsignatura(tramo.asignaturas[dia.id-1].idAsignatura);
+    //         td.style.backgroundColor = asignatura.color;
+    //         td.textContent = asignatura.nombre + " " + asignatura.grupo + " " + asignatura.aula;
+    //         filas.appendChild(td);
+    //     });
+    //     tbody.appendChild(filas);
+    // }
+    // )
+
+    //  // Cuando ponga el mouse en lo alto de cualquier asignatura, que me muestre el nombre de la asignatura, el grupo y el aula, el cuadro amarillo de abajo
+    // td.addEventListener("mouseenter", () => {
+    //     document.getElementById("aula").textContent = asignaturas.aula;
+    // });
 
 }
 
