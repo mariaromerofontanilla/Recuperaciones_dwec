@@ -16,6 +16,7 @@ const PRODUCTOS = [
 ];
 
 // Escribe aquí tu código
+
 // Funcion para filtrar los productos por categoria
 function filtrarProductosPorCategoria(categoriaId) {
 	let productosFiltrados = [];
@@ -34,6 +35,7 @@ function iniciar() {
 	mostrarCategorias();
 	// Llamar a la funcion para mostrar los productos en la tabla
 	mostrarProductos(PRODUCTOS);
+
 }
 
 // window.addEventListener("load", function() {
@@ -58,10 +60,23 @@ function mostrarCategorias() {
 function mostrarProductos(productos) {
 	let txtProductos = ""; // Variable para almacenar las filas de la tabla
 	for (let i = 0; i < productos.length; i++) {
-		txtProductos += `<tr><td>${productos[i].nombre}</td><td>${productos[i].precio}€</td><td>${productos[i].descripcion}</td><td><img src="images/${productos[i].imagen}" alt="${productos[i].nombre}" width="100"></td></tr>`;
+		txtProductos += `<div class="card" style="width: 18rem;">
+              <img src="images/${PRODUCTOS[i].imagen}" class="card-img-top" alt="">
+              <div class="card-body">
+                <h5 class="card-title">${PRODUCTOS[i].nombre}</h5>
+                <p class="card-text">${PRODUCTOS[i].descripcion}</p>
+                <a href="#" class="btn btn-primary">categorias</a>
+              </div>
+            </div>`;
 	}
 	document.getElementById("productos").innerHTML = txtProductos; // Limpiar la tabla antes de agregar las filas
 }
 
-
+// Filtrar para que cuando le de click a una categoria, me muestre los productos de esa categoria
+function filtrarPorCategoria(categoriaId) {
+	// Filtrar los productos por categoria
+	let productosFiltrados = filtrarProductosPorCategoria(categoriaId);
+	// Mostrar los productos filtrados en la tabla
+	mostrarProductos(productosFiltrados);
+}
 
