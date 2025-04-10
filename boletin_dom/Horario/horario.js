@@ -191,7 +191,8 @@ function crearHorario() {
             // Añadir el event listener a cada celda
             td.addEventListener("mouseenter", () => {
                 document.getElementById("aula").textContent = 
-                    `Asignatura: ${asignatura.nombre} Grupo: ${asignatura.grupo} Aula: ${asignatura.aula}`;
+                    // `Asignatura: ${asignatura.nombre} Grupo: ${asignatura.grupo} Aula: ${asignatura.aula}`;
+                    `${asignatura.aula}`;
             });
             
             fila.appendChild(td);
